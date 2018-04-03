@@ -18,9 +18,6 @@ namespace HelperApp
             domain: ConfigurationManager.AppSettings["LuisAPIHostName"])))
         {
         }
-
-        private const string EntityName = "Name";
-
         private const string EntityBook = "BookingOption";
 
         private const string EntityShopping = "ShoppingSite";
@@ -44,7 +41,6 @@ namespace HelperApp
         [LuisIntent("Greet")]
         public async Task GreetIntent(IDialogContext context, LuisResult result)
         {
-            EntityRecommendation nameEntity;
             string greet = new GlobalHandler().GetRandomString(new Constants().Welcome);
             await context.PostAsync($"{greet}");
             context.Wait(this.MessageReceived);
